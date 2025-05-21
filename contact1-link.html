@@ -1,0 +1,83 @@
+<!-- Thêm đoạn mã này vào bất kỳ đâu trong trang web của bạn -->
+<style>
+    /* Style cho nút liên hệ */
+    .contact-button {
+      display: inline-block;
+      cursor: pointer;
+      color: #007bff;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 10px 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+  
+    .contact-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+  
+    /* Style cho iframe container */
+    .iframe-container {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      z-index: 9998;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+  
+    .iframe-container.show {
+      width: 440px;
+      height: 520px;
+    }
+  
+    /* Style cho iframe */
+    .contact-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    /* Ẩn thanh cuộn cho toàn bộ trang */
+    body {
+      overflow: hidden;
+    }
+  </style>
+  
+  <!-- Nút liên hệ -->
+  <div class="contact-button" id="contactBtn">👉 Liên hệ [Nhật Tân]</div>
+  
+  <!-- Container chứa iframe -->
+  <div class="iframe-container" id="iframeContainer">
+    <iframe src="https://nhattanktnn.github.io/html/contact1.html" class="contact-iframe" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+  </div>
+  
+  <script>
+    // Xử lý sự kiện click
+    document.getElementById('contactBtn').addEventListener('click', function() {
+      document.getElementById('iframeContainer').classList.toggle('show');
+    });
+  
+    // Đóng iframe khi click bên ngoài
+    document.addEventListener('click', function(event) {
+      const container = document.getElementById('iframeContainer');
+      const button = document.getElementById('contactBtn');
+      
+      if (!container.contains(event.target) && event.target !== button && container.classList.contains('show')) {
+        container.classList.remove('show');
+      }
+    });
+  </script>
